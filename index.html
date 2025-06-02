@@ -171,14 +171,79 @@
     }
 
     function enviarWhatsapp() {
-      const aluno = document.getElementById('aluno').value;
-      const responsavel = document.getElementById('responsavel').value;
-      const turma = document.getElementById('turma').value;
-      const total = document.getElementById('totalValor').innerText;
-      const texto = `Olá, meu nome é ${responsavel}, responsável pelo(a) aluno(a) ${aluno} da turma ${turma}. O valor do meu pedido é R$ ${total}. Segue o comprovante de Pix para o evento.`;
-      const link = `https://wa.me/5516993783076?text=${encodeURIComponent(texto)}`;
-      window.open(link, '_blank');
+  const aluno = document.getElementById('aluno').value.trim();
+  const responsavel = document.getElementById('responsavel').value.trim();
+  const turma = document.getElementById('turma').value;
+
+  if (!aluno || !responsavel || !turma) {
+    alert('Por favor, preencha os campos de Aluno(a), Responsável e Turma.');
+    return;
+  }
+
+  const precos = {
+    mesa: 60,
+    kafta: 9,
+    vinagrete: 3,
+    pipoca: 3,
+    cachorro: 6,
+    bolo: 7,
+    brigadeiro: 7,
+    cerveja: 8,
+    coca: 6,
+    cocazero: 6,
+    guarana: 6,
+    guaranazero: 6,
+    suco300: 7,
+    suco: 3,
+    agua: 3,
+    aguagas: 3,
+    vinho: 5,
+    quentao: 5,
+    kitlanche: 15
+  };
+
+  const nomes = {
+    mesa: 'Mesa com 4 cadeiras',
+    kafta: 'Kafta',
+    vinagrete: 'Kit Vinagrete/Farofa',
+    pipoca: 'Pipoca',
+    cachorro: 'Cachorro-Quente',
+    bolo: 'Bolo Red Velvet',
+    brigadeiro: 'Kit Brigadeiros/Beijinhos',
+    cerveja: 'Cerveja Império',
+    coca: 'Coca-Cola',
+    cocazero: 'Coca-Cola Zero',
+    guarana: 'Guaraná Antártica',
+    guaranazero: 'Guaraná Zero',
+    suco300: 'Suco Laranja 300ml',
+    suco: 'Suco Caixinha',
+    agua: 'Água sem Gás',
+    aguagas: 'Água com Gás',
+    vinho: 'Vinho Quente',
+    quentao: 'Quentão',
+    kitlanche: 'Kit Lanche Ensaio Sábado'
+  };
+
+  let mensagem = '';
+  let total = 0;
+
+  for (let item in precos) {
+    const qtd = parseInt(document.getElementById(item).value) || 0;
+    if (qtd > 0) {
+      const valor = qtd * precos[item];
+      mensagem += `${qtd} - ${nomes[item]} R$${valor.toFixed(2)}\n`;
+      total += valor;
     }
+  }
+
+  mensagem += '------------------------------\n';
+  mensagem += `Total\t\tR$${total.toFixed(2)}\n`;
+  mensagem += '------------------------------\n';
+  mensagem += `Aluno(a): ${aluno}\nResponsável: ${responsavel}\nTurma: ${turma}\n\nSegue o comprovante de pagamento.`;
+
+  const link = `https://wa.me/5516993783076?text=${encodeURIComponent(mensagem)}`;
+  window.open(link, '_blank');
+}
   </script>
 </head>
 <body>
