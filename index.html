@@ -124,7 +124,62 @@
       text-align: center;
       margin-top: 10px;
     }
+    .btn-calcular {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      background-color: #8351b8;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .btn-calcular:hover {
+      background-color: #6c3d9e;
+    }
   </style>
+  <script>
+    function calcularTotal() {
+      const precos = {
+        mesa: 60,
+        kafta: 9,
+        vinagrete: 3,
+        pipoca: 3,
+        cachorro: 6,
+        bolo: 7,
+        brigadeiro: 7,
+        cerveja: 8,
+        coca: 6,
+        cocazero: 6,
+        guarana: 6,
+        guaranazero: 6,
+        suco300: 7,
+        suco: 3,
+        agua: 3,
+        aguagas: 3,
+        vinho: 5,
+        quentao: 5,
+        kitlanche: 15
+      };
+      let total = 0;
+      for (let item in precos) {
+        const qtd = parseInt(document.getElementById(item).value) || 0;
+        total += qtd * precos[item];
+      }
+      document.getElementById('totalValor').innerText = total.toFixed(2);
+    }
+
+    function enviarWhatsapp() {
+      const aluno = document.getElementById('aluno').value;
+      const responsavel = document.getElementById('responsavel').value;
+      const turma = document.getElementById('turma').value;
+      const total = document.getElementById('totalValor').innerText;
+      const texto = `Olá, meu nome é ${responsavel}, responsável pelo(a) aluno(a) ${aluno} da turma ${turma}. O valor do meu pedido é R$ ${total}. Segue o comprovante de Pix para o evento.`;
+      const link = `https://wa.me/5516993783076?text=${encodeURIComponent(texto)}`;
+      window.open(link, '_blank');
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -212,7 +267,9 @@
           <input type="number" id="kitlanche" value="0" min="0">
         </div>
       </div>
-
+      
+ <button type="button" class="btn-calcular" onclick="calcularTotal()">Calcular Total</button>
+      
       <div class="total">
         Total: R$ <span id="totalValor">0.00</span>
       </div>
