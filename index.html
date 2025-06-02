@@ -126,7 +126,7 @@
     }
     .btn-calcular {
       display: block;
-      margin: 20px auto;
+      margin: 30px auto 10px;
       padding: 12px 25px;
       font-size: 1.1em;
       background-color: #8351b8;
@@ -192,39 +192,8 @@
   <div class="container">
     <h2>Reserve sua mesa e seus itens antecipadamente</h2>
     <form id="pedidoForm">
-      <div class="form-group">
-        <label>Aluno(a):</label>
-        <input type="text" id="aluno" required>
-      </div>
-      <div class="form-group">
-        <label>Responsável:</label>
-        <input type="text" id="responsavel" required>
-      </div>
-      <div class="form-group">
-        <label>Turma:</label>
-        <select id="turma" required>
-          <option value="">Selecione...</option>
-          <option>BB1 (baby class 3 a 5 anos)</option>
-          <option>BB2 (baby class 6 a 8 anos)</option>
-          <option>BT1 (baby tap 6 a 8 anos)</option>
-          <option>B1 (ballet infantil)</option>
-          <option>B2 (ballet juvenil)</option>
-          <option>B3 (ballet juvenil/adulto)</option>
-          <option>B4 (ballet adulto)</option>
-          <option>DC1 (dança contemporânea 1)</option>
-          <option>DC2 (dança contemporânea 2)</option>
-          <option>FD (FreeDance)</option>
-          <option>J1 (jazz infantil)</option>
-          <option>J2 (jazz juvenil 1)</option>
-          <option>J3 (jazz juvenil 2)</option>
-          <option>S1 (sapateado infantil)</option>
-          <option>S2 (sapateado juvenil 1)</option>
-          <option>S3 (sapateado juvenil 2)</option>
-          <option>S4 (sapateado adulto)</option>
-        </select>
-      </div>
-
-      <h3>Entrada</h3>
+  
+       <h3>Entrada</h3>
       <div class="grid">
         <div class="grid-item">
           <label>Mesa com 4 cadeiras</label>
@@ -267,9 +236,9 @@
           <input type="number" id="kitlanche" value="0" min="0">
         </div>
       </div>
-      
- <button type="button" class="btn-calcular" onclick="calcularTotal()">Calcular Total</button>
-      
+
+      <button type="button" class="btn-calcular" onclick="calcularTotal()">Calcular Total</button>
+
       <div class="total">
         Total: R$ <span id="totalValor">0.00</span>
       </div>
