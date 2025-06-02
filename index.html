@@ -240,7 +240,8 @@
   mensagem += `Total\t\tR$${total.toFixed(2)}\n`;
   mensagem += '------------------------------\n';
   mensagem += `Aluno(a): ${aluno}\nResponsável: ${responsavel}\nTurma: ${turma}\n\nSegue o comprovante de pagamento.`;
-
+  mensagem += '------------------------------\n';
+  mensagem += `Obrigatório o envio do comprovante de pagamento para reserva da mesa e dos itens solicitados.`;
   const link = `https://wa.me/5516993783076?text=${encodeURIComponent(mensagem)}`;
   window.open(link, '_blank');
 }
@@ -344,7 +345,8 @@
       <h3>Pagamento via Pix</h3>
       <p>Chave: <strong>pestanarenatinha@gmail.com</strong></p>
       <img src="QRCode.png" alt="QR Code Pix">
-      <button class="whatsapp-btn" onclick="enviarWhatsapp()">Enviar comprovante via WhatsApp</button>
+      <button class="whatsapp-btn" onclick="enviarWhatsapp()">Enviar pedido via WhatsApp</button>
+      <p><strong>*Obrigatório o envio do pedido e comprovante de pagamento via Whats, para confirmação dos pedidos e reserva da mesa</strong></p>
     </div>
   </div>
    
