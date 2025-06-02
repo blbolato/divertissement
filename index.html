@@ -240,7 +240,7 @@
   mensagem += `Total\t\tR$${total.toFixed(2)}\n`;
   mensagem += '------------------------------\n';
   mensagem += `Aluno(a): ${aluno}\nResponsável: ${responsavel}\nTurma: ${turma}\n\nSegue o comprovante de pagamento.\n`;
-  mensagem += '------------------------------\n';
+  mensagem += '\n------------------------------\n';
   mensagem += `Obrigatório o envio do comprovante de pagamento para reserva da mesa e dos itens solicitados.`;
   const link = `https://wa.me/5516993783076?text=${encodeURIComponent(mensagem)}`;
   window.open(link, '_blank');
